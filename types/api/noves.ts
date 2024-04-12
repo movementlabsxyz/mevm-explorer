@@ -20,7 +20,6 @@ export interface NovesClassificationData {
     type: string | null;
   };
   message?: string;
-  deployedContractAddress?: string;
 }
 
 export interface Approved {

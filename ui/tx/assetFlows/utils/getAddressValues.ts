@@ -57,10 +57,6 @@ function extractAddresses(data: NovesResponseData) {
     addressesSet.add({ hash: data.classificationData.approved.spender });
   }
 
-  if (data.classificationData.deployedContractAddress) {
-    addressesSet.add({ hash: data.classificationData.deployedContractAddress });
-  }
-
   if (data.txTypeVersion === 2) {
     data.classificationData.sent.forEach((transaction) => {
       addressesSet.add({ hash: transaction.from.address, name: transaction.from.name });
@@ -76,5 +72,5 @@ function extractAddresses(data: NovesResponseData) {
   const addresses = Array.from(addressesSet) as Array<{hash: string; name?: string}>; // Convert Set to an array
 
   // Remove empty and null values
-  return addresses.filter(address => address.hash !== null && address.hash !== '' && address.hash !== undefined);
+  return addresses.filter(address => address.hash !== null && address.hash !== '');
 }
